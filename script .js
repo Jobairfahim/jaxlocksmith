@@ -87,10 +87,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.querySelector('.submit-btn');
   if (submitBtn) {
     submitBtn.addEventListener('click', () => {
-      const nameInput  = document.querySelector('input[placeholder="John"]');
-      const phoneInput = document.querySelector('input[type="tel"]');
+      const firstNameInput = document.getElementById('firstName');
+      const phoneInput = document.getElementById('phone');
 
-      if (!nameInput.value.trim() || !phoneInput.value.trim()) {
+      if (!firstNameInput.value.trim() || !phoneInput.value.trim()) {
         alert('Please fill in your name and phone number so we can reach you.');
         return;
       }
@@ -138,9 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-      navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.6)';
+      navbar.style.boxShadow = '0 8px 40px rgba(0,0,0,0.4)';
     } else {
-      navbar.style.boxShadow = 'none';
+      navbar.style.boxShadow = '0 8px 32px rgba(0, 0, 0, 0.3)';
     }
   }, { passive: true });
 
