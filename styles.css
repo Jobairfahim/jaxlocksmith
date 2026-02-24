@@ -130,7 +130,7 @@ a { text-decoration: none; color: inherit; }
 .dropdown-menu a .d-icon { font-size: 16px; }
 
 .nav-cta {
-  background: var(--cyan) !important; color: var(--navy) !important;
+  background: var(--white) !important; color: var(--navy) !important;
   font-weight: 700 !important; border-radius: 7px !important;
   padding: 9px 20px !important;
   box-shadow: 0 0 14px rgba(0,212,255,0.35);
