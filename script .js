@@ -28,6 +28,58 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
+  /* ── DESKTOP SERVICES DROPDOWN ── */
+  const dropdownBtns = document.querySelectorAll('.dropdown-btn');
+  
+  dropdownBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const dropdown = btn.nextElementSibling;
+      const isOpen = dropdown.style.opacity === '1';
+      
+      // Close all dropdowns and remove open class
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.style.opacity = '0';
+        menu.style.pointerEvents = 'none';
+        menu.style.transform = 'translateX(-50%) translateY(-8px)';
+      });
+      document.querySelectorAll('.dropdown-btn').forEach(b => b.classList.remove('open'));
+      
+      // Open clicked dropdown if it was closed
+      if (!isOpen) {
+        dropdown.style.opacity = '1';
+        dropdown.style.pointerEvents = 'all';
+        dropdown.style.transform = 'translateX(-50%) translateY(0)';
+        btn.classList.add('open');
+      }
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown-btn') && !e.target.closest('.dropdown-menu')) {
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.style.opacity = '0';
+        menu.style.pointerEvents = 'none';
+        menu.style.transform = 'translateX(-50%) translateY(-8px)';
+      });
+      document.querySelectorAll('.dropdown-btn').forEach(b => b.classList.remove('open'));
+    }
+  });
+
+  // Close dropdown when clicking on dropdown menu items
+  document.querySelectorAll('.dropdown-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.style.opacity = '0';
+        menu.style.pointerEvents = 'none';
+        menu.style.transform = 'translateX(-50%) translateY(-8px)';
+      });
+      document.querySelectorAll('.dropdown-btn').forEach(b => b.classList.remove('open'));
+    });
+  });
+
+
   /* ── FAQ ACCORDION ── */
   document.querySelectorAll('.faq-q').forEach(q => {
     q.addEventListener('click', () => {
@@ -86,27 +138,68 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── CONTACT FORM SUBMIT ── */
   const submitBtn = document.querySelector('.submit-btn');
   if (submitBtn) {
-    submitBtn.addEventListener('click', () => {
-      const nameInput  = document.querySelector('input[placeholder="John"]');
+    submitBtn.addEventListener('click', async () => {
+      const firstName = document.querySelector('input[placeholder="John"]').value.trim();
+      const lastName = document.querySelector('input[placeholder="Smith"]').value.trim();
       const phoneInput = document.querySelector('input[type="tel"]');
+      const phone = phoneInput.value.trim();
+      const email = document.querySelector('input[type="email"]').value.trim();
+      const service = document.querySelector('#service').value;
+      const message = document.querySelector('textarea').value.trim();
 
-      if (!nameInput.value.trim() || !phoneInput.value.trim()) {
+      if (!firstName || !lastName || !phone) {
         alert('Please fill in your name and phone number so we can reach you.');
         return;
       }
 
-      submitBtn.textContent = '✔ Message Sent!';
-      submitBtn.style.background = 'var(--green)';
+      // Show loading state
+      submitBtn.textContent = '⏳ Sending...';
+      submitBtn.style.background = 'var(--text-dim)';
       submitBtn.disabled = true;
 
-      setTimeout(() => {
-        submitBtn.textContent = '📨 SEND MESSAGE';
-        submitBtn.style.background = '';
-        submitBtn.disabled = false;
-        // Reset form fields
-        document.querySelectorAll('.contact-form input, .contact-form select, .contact-form textarea')
-          .forEach(el => { el.value = ''; });
-      }, 3500);
+      try {
+        const response = await fetch('send-clicksend.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            firstName,
+            lastName,
+            phone,
+            email,
+            service,
+            message
+          })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          submitBtn.textContent = '✅ Message Sent!';
+          submitBtn.style.background = 'var(--green)';
+          
+          setTimeout(() => {
+            submitBtn.textContent = '📨 SEND MESSAGE';
+            submitBtn.style.background = '';
+            submitBtn.disabled = false;
+            // Reset form fields
+            document.querySelectorAll('.contact-form input, .contact-form select, .contact-form textarea')
+              .forEach(el => { el.value = ''; });
+          }, 3500);
+        } else {
+          throw new Error(result.message || 'Failed to send message');
+        }
+      } catch (error) {
+        submitBtn.textContent = '❌ Send Failed';
+        submitBtn.style.background = 'var(--alert)';
+        
+        setTimeout(() => {
+          submitBtn.textContent = '📨 SEND MESSAGE';
+          submitBtn.style.background = '';
+          submitBtn.disabled = false;
+        }, 3000);
+      }
     });
   }
 
