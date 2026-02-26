@@ -60,10 +60,10 @@ a {
 }
 
 /* Performance optimizations */
-img {
+/* img {
   max-width: 250%;
   height: auto;
-}
+} */
 
 /* Reduce paint on scroll */
 .will-change-transform {
@@ -119,6 +119,37 @@ img {
 
 .nav-links {
   display: flex; align-items: center; gap: 4px; list-style: none;
+}
+
+/* Navbar responsiveness */
+@media (max-width: 1024px) {
+  #navbar {
+    margin: 0 20px;
+  }
+  
+  .nav-inner {
+    padding: 0 30px;
+    gap: 30px;
+  }
+  
+  .nav-links {
+    gap: 2px;
+  }
+  
+  .nav-logo img {
+    width: 50px; height: 37px;
+  }
+}
+
+@media (max-width: 768px) {
+  #navbar {
+    top: 10px;
+    margin: 0 16px;
+  }
+  
+  .nav-logo img {
+    width: 45px; height: 33px;
+  }
 }
 
 .nav-links > li { position: relative; }
