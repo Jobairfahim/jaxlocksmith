@@ -3,6 +3,7 @@
    Theme: Industrial Command — Deep Navy + Electric Cyan + Slate
    ============================================================ */
 
+/* Critical CSS - Above the fold optimizations */
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -26,8 +27,16 @@
   --transition: 0.28s cubic-bezier(.4,0,.2,1);
 }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+
+html { 
+  scroll-behavior: smooth; 
+  font-display: swap;
+}
 
 body {
   font-family: 'DM Sans', sans-serif;
@@ -35,6 +44,8 @@ body {
   color: var(--text);
   line-height: 1.65;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,h2,h3,h4 {
@@ -43,7 +54,30 @@ h1,h2,h3,h4 {
   line-height: 1.1;
 }
 
-a { text-decoration: none; color: inherit; }
+a { 
+  text-decoration: none; 
+  color: inherit; 
+}
+
+/* Performance optimizations */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reduce paint on scroll */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 /* ─── SCROLLBAR ─── */
 ::-webkit-scrollbar { width: 6px; }
@@ -572,6 +606,162 @@ section { padding: 90px 28px; }
   font-size: 14px;
   color: var(--text-dim);
   line-height: 1.6;
+}
+
+/* ─── REVIEWS ─── */
+#reviews { background: var(--navy); }
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.review-card {
+  background: var(--navy-card);
+  border: 1px solid var(--border-dim);
+  border-radius: 12px;
+  padding: 20px;
+  transition: var(--transition);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-card:hover {
+  border-color: var(--border);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.4), 0 0 20px var(--cyan-glow);
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.reviewer-info {
+  flex: 1;
+}
+
+.reviewer-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.reviewer-meta {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.review-rating {
+  font-size: 14px;
+  color: #FFD700;
+  letter-spacing: 1px;
+}
+
+.review-time {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+}
+
+.review-price {
+  font-size: 13px;
+  color: var(--cyan);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.review-text {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.reviews-cta {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.reviews-cta .cta-card {
+  background: linear-gradient(135deg, var(--navy-card), var(--navy-light));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 0 30px var(--cyan-glow);
+}
+
+.reviews-cta .cta-card h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.reviews-cta .cta-card p {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* Responsive Design - Optimized for mobile performance */
+@media (max-width: 1024px) {
+  .reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  /* Reduce complex animations on mobile */
+  .hero-card-wrap,
+  .service-card,
+  .review-card {
+    transform: none;
+    transition: none;
+  }
+  
+  /* Optimize navbar for mobile */
+  #navbar {
+    top: 10px;
+    margin: 0 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  /* Further optimize for small screens */
+  .section-inner {
+    padding: 0 12px;
+  }
+  
+  .review-card {
+    padding: 16px;
+  }
+  
+  .reviewer-name {
+    font-size: 14px;
+  }
+  
+  .review-text {
+    font-size: 13px;
+  }
 }
 
 /* ─── AUTOMOTIVE DETAIL ─── */

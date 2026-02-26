@@ -9,7 +9,26 @@
 <link rel="icon" type="image/x-icon" href="assets/images/logo.ico">
 <link rel="shortcut icon" href="assets/images/logo.ico">
 <title>Jax Locksmith Pro | Licensed & Bonded Locksmith in Jacksonville, FL</title>
+
+<!-- Preload critical resources -->
+<link rel="preload" href="styles.css" as="style">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" as="style">
+
+<!-- Optimize font loading -->
 <link rel="stylesheet" href="styles.css">
+<style>
+/* Critical CSS for above-the-fold content */
+body{font-family:'DM Sans',sans-serif;background:#070D1A;color:#E8F0FF;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+#navbar{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:1000;background:transparent;border:1px solid rgba(0,212,255,0.2);border-radius:50px;max-width:1220px;margin:0 28px}
+.hero-title{font-family:'Rajdhani',sans-serif;font-size:clamp(50px,6.5vw,90px);font-weight:700;color:#EEF4FF;margin-bottom:22px}
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:#EEF4FF;color:#070D1A;font-family:'Rajdhani',sans-serif;font-size:18px;font-weight:700;padding:14px 28px;border-radius:7px;letter-spacing:0.05em;border:2px solid #00D4FF;box-shadow:0 0 20px rgba(0,212,255,0.3)}
+</style>
+
+<!-- DNS prefetch for external resources -->
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//www.google.com">
+
+<meta name="format-detection" content="telephone=no">
 </head>
 <body>
 
@@ -17,7 +36,7 @@
 <header id="navbar">
   <div class="nav-inner">
     <a href="#home" class="nav-logo">
-      <img src="assets/images/logo.webp" alt="Jax Locksmith Pro" style="width: 60px; height: 44px; border-radius: 8px;">
+      <img src="assets/images/logo.webp" alt="Jax Locksmith Pro" loading="lazy" style="width: 60px; height: 44px; border-radius: 8px;">
     </a>
     <nav aria-label="Main navigation">
       <ul class="nav-links">
@@ -271,6 +290,126 @@
         <h3>Don't See Your Area Listed?</h3>
         <p>We serve all communities within a 60-mile radius of Jacksonville. If you're located nearby, chances are we can help!</p>
         <p style="font-size:14px;color:var(--text-dim);margin-bottom:18px">Call us to confirm service availability in your area.</p>
+        <a href="tel:9046371117" class="btn-primary" style="width:100%">📞 (904) 637-1117</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════ REVIEWS ═══════════════ -->
+<section id="reviews">
+  <div class="section-inner">
+    <span class="section-tag">Customer Reviews</span>
+    <h2 class="section-title">What Our Customers Say</h2>
+    <p class="section-desc">Real reviews from satisfied customers throughout Jacksonville and surrounding areas.</p>
+
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-name">Dena Tattoos</div>
+            <div class="reviewer-meta">Local Guide · 6 reviews</div>
+          </div>
+          <div class="review-rating">★★★★★</div>
+        </div>
+        <div class="review-time">2 months ago</div>
+        <div class="review-price">Great price | $160-180</div>
+        <div class="review-text">"Great and prompt service and very happy to help us. Hard to find people who love their jobs he is one of them!"</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-name">Kenneth Shelly</div>
+            <div class="reviewer-meta">Local Guide</div>
+          </div>
+          <div class="review-rating">★★★★★</div>
+        </div>
+        <div class="review-time">5 months ago</div>
+        <div class="review-price">Great price</div>
+        <div class="review-text">"Best blacksmith company lost my car key at the beach cut new key for my Ford f 150 within 15 minutes highly recommend it to anyone"</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-name">Shalliek Wright</div>
+            <div class="reviewer-meta">Local Guide · 55 reviews</div>
+          </div>
+          <div class="review-rating">★★★★★</div>
+        </div>
+        <div class="review-time">a year ago</div>
+        <div class="review-text">"Izzy immediately came to my residence, programmed my new keyfob for my truck and cut me a new key. Was efficient and very convenient. Thanks again Izzy"</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-name">David Massais</div>
+            <div class="reviewer-meta">Local Guide · 8 reviews</div>
+          </div>
+          <div class="review-rating">★★★★★</div>
+        </div>
+        <div class="review-time">2 years ago</div>
+        <div class="review-text">"Searched on internet and found this company. Called and was told I would get callback from tech shortly. It wasn't 5 minutes later and Izzy called me. Was very helpful, quoted very reasonable price and offered to be out in 30 minutes. Showed up ahead of schedule, did an amazing job opening vehicle and making me a new key. I would recommend using this company any day over any other company in Jacksonville. Great experience and very fair pricing. Thank you Izzy!!"</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-name">nyah nicole</div>
+            <div class="reviewer-meta">Local Guide · 3 reviews</div>
+          </div>
+          <div class="review-rating">★★★★★</div>
+        </div>
+        <div class="review-time">2 years ago</div>
+        <div class="review-text">"Izzy came in under an hour and helped me get inside of my commercial building! My key was broken off inside of the lock & he had the lock replaced & building open in 5 minutes. Definitely recommend him for any problems y'all may experience."</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-name">Sophia Peake</div>
+            <div class="reviewer-meta">Local Guide · 8 reviews</div>
+          </div>
+          <div class="review-rating">★★★★★</div>
+        </div>
+        <div class="review-time">6 months ago</div>
+        <div class="review-text">"Xavier was a huge help when I got locked out late Sunday night. He was very nice, professional, and quick. I'm really thankful for his help and would recommend him to anyone."</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-name">Katelyn Hodges</div>
+            <div class="reviewer-meta">Local Guide · 3 reviews</div>
+          </div>
+          <div class="review-rating">★★★★★</div>
+        </div>
+        <div class="review-time">5 months ago</div>
+        <div class="review-price">Reasonable price | $60-80</div>
+        <div class="review-text">"Izzy was amazinggg. Gave me a quote over the phone before he got there and was fast and efficient. Showed up on time. 10/10 service!"</div>
+      </div>
+
+      <div class="review-card">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-name">Will</div>
+            <div class="reviewer-meta">Local Guide</div>
+          </div>
+          <div class="review-rating">★★★★★</div>
+        </div>
+        <div class="review-time">a month ago</div>
+        <div class="review-price">Great price | $160-180</div>
+        <div class="review-text">"Lost my vehicle car keys, called these guys and they came quick and got job done for a price that worked for me."</div>
+      </div>
+    </div>
+
+    <div class="reviews-cta">
+      <div class="cta-card">
+        <h3>Need Locksmith Service?</h3>
+        <p>Join our satisfied customers with fast, professional locksmith service throughout Jacksonville.</p>
         <a href="tel:9046371117" class="btn-primary" style="width:100%">📞 (904) 637-1117</a>
       </div>
     </div>
@@ -1337,6 +1476,54 @@
 
 <!-- ═══════════════ SCROLL TO TOP ═══════════════ -->
 <button id="scrollTop" title="Back to top" aria-label="Back to top">↑</button>
+
+<!-- Performance optimizations -->
+<script>
+// Optimize mobile performance
+if (window.innerWidth <= 768) {
+  // Disable complex animations on mobile
+  document.querySelectorAll('.hero-card-wrap, .service-card, .review-card').forEach(el => {
+    el.style.transform = 'none';
+    el.style.transition = 'none';
+  });
+}
+
+// Lazy load images when they come into viewport
+if ('IntersectionObserver' in window) {
+  const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src || img.src;
+        img.classList.remove('lazy');
+        observer.unobserve(img);
+      }
+    });
+  });
+
+  document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+    imageObserver.observe(img);
+  });
+}
+
+// Preload critical resources
+function preloadCriticalResources() {
+  const criticalLinks = [
+    'assets/images/logo.webp'
+  ];
+  
+  criticalLinks.forEach(href => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = href;
+    document.head.appendChild(link);
+  });
+}
+
+// Run optimizations
+preloadCriticalResources();
+</script>
 
 <script src="script .js"></script>
 </body>
