@@ -1479,13 +1479,30 @@ body{font-family:'DM Sans',sans-serif;background:#070D1A;color:#E8F0FF;line-heig
 
 <!-- Performance optimizations -->
 <script>
-// Optimize mobile performance
+// Aggressive mobile speed optimizations
 if (window.innerWidth <= 768) {
-  // Disable complex animations on mobile
-  document.querySelectorAll('.hero-card-wrap, .service-card, .review-card').forEach(el => {
-    el.style.transform = 'none';
+  // Disable all animations and transitions
+  document.querySelectorAll('*').forEach(el => {
+    el.style.animation = 'none';
     el.style.transition = 'none';
   });
+  
+  // Remove box shadows for performance
+  document.querySelectorAll('.hero-card-wrap, .service-card, .review-card').forEach(el => {
+    el.style.boxShadow = 'none';
+  });
+  
+  // Optimize images for mobile
+  document.querySelectorAll('img').forEach(img => {
+    img.style.imageRendering = 'auto';
+    img.style.filter = 'none';
+  });
+  
+  // Simplify navbar
+  const navbar = document.getElementById('navbar');
+  if (navbar) {
+    navbar.style.backdropFilter = 'none';
+  }
 }
 
 // Lazy load images when they come into viewport
@@ -1521,7 +1538,7 @@ function preloadCriticalResources() {
   });
 }
 
-// Run optimizations
+// Run optimizations immediately
 preloadCriticalResources();
 </script>
 

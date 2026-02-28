@@ -60,10 +60,36 @@ a {
 }
 
 /* Performance optimizations */
-/* img {
+img {
   max-width: 250%;
   height: auto;
-} */
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Disable complex animations on mobile */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  /* Reduce box shadows on mobile */
+  .hero-card-wrap,
+  .service-card,
+  .review-card {
+    box-shadow: none !important;
+  }
+  
+  /* Simplify navbar on mobile */
+  #navbar {
+    backdrop-filter: none !important;
+  }
+}
 
 /* Reduce paint on scroll */
 .will-change-transform {
