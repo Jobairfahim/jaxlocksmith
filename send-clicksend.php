@@ -30,8 +30,8 @@ if ($name === '' || $email === '' || $message === '') {
 }
 
 /** ✅ Put your REAL ClickSend credentials */
-$username = 'locksinmacon@gmail.com';  // often your ClickSend login email
-$apiKey   = '4CBE5079-AF82-D77A-8FE0-A559C2DA6B07d';   // API key / token from ClickSend
+$username = 'jaxlocksmithpro@gmail.com';  // often your ClickSend login email
+$apiKey   = 'E5357CE6-A1F4-0F2B-D6C3-77A41EE1582E';   // API key / token from ClickSend
 $to       = '+18335183268';
 
 // Test response first
